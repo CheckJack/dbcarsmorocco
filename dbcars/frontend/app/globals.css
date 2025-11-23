@@ -1,0 +1,1000 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #1a1a1a;
+  --primary: #1a1a1a;
+  --secondary: #f5f5f5;
+  --accent: #d4af37;
+  --text-dark: #1a1a1a;
+  --text-light: #666666;
+  --text-white: #ffffff;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+html {
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: auto;
+  min-height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: auto;
+  min-height: 100%;
+}
+
+/* Smooth scrolling animation for car logos */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 40s linear infinite;
+  display: flex;
+  width: fit-content;
+  will-change: transform;
+}
+
+.animate-scroll:hover {
+  animation-play-state: paused;
+}
+
+/* Smooth scrolling animation for vehicles carousel */
+@keyframes scroll-vehicles {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll-vehicles {
+  animation: scroll-vehicles 60s linear infinite;
+  display: flex;
+  width: fit-content;
+  will-change: transform;
+}
+
+.animate-scroll-vehicles:hover {
+  animation-play-state: paused;
+}
+
+/* Smooth scrolling animation for reviews carousel */
+@keyframes scroll-reviews {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll-reviews {
+  animation: scroll-reviews linear infinite;
+  will-change: transform;
+}
+
+/* Force header transparency on home page */
+header.header-transparent {
+  background-color: transparent !important;
+  background: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+.glass-form-container {
+  position: relative;
+  overflow: visible;
+  border-radius: 24px;
+  z-index: 8;
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.2),
+    0 8px 16px rgba(0, 0, 0, 0.2),
+    0 0 8px rgba(255, 255, 255, 0.1),
+    0 0 16px rgba(255, 255, 255, 0.08);
+}
+
+.glass-form-box {
+  background: rgba(0, 0, 0, 0.95);
+  border-radius: 24px;
+  position: relative;
+  z-index: 10;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  box-shadow:
+    inset 0 40px 60px -8px rgba(255, 255, 255, 0.12),
+    inset 4px 0 12px -6px rgba(255, 255, 255, 0.12),
+    inset 0 0 12px -4px rgba(255, 255, 255, 0.12);
+}
+
+.glass-form-box select option {
+  background: #3a3a3a;
+  color: white;
+}
+
+/* DatePicker font size adjustments */
+.react-datepicker__current-month {
+  font-size: 0.875rem !important;
+}
+
+.react-datepicker__header--time,
+.react-datepicker-time__header,
+.react-datepicker__time-caption {
+  font-size: 0.875rem !important;
+}
+
+/* DatePicker header - Orange background */
+.react-datepicker__header {
+  background-color: #f97316 !important;
+  border: none !important;
+  border-bottom: none !important;
+}
+
+.react-datepicker__header * {
+  color: white !important;
+}
+
+.react-datepicker__current-month,
+.react-datepicker__day-name {
+  color: white !important;
+}
+
+/* Remove outline and border from DatePicker */
+.react-datepicker {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.react-datepicker__triangle {
+  display: none !important;
+}
+
+/* Blog content overflow prevention */
+.prose {
+  max-width: 100% !important;
+  overflow-wrap: break-word !important;
+  word-break: break-word !important;
+  color: #334155 !important;
+  line-height: 1.75 !important;
+}
+
+.prose img {
+  max-width: 100% !important;
+  height: auto !important;
+  border-radius: 12px !important;
+  margin: 2rem 0 !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+}
+
+.prose pre {
+  overflow-x: auto !important;
+  max-width: 100% !important;
+  word-break: break-word !important;
+  background-color: #1e293b !important;
+  color: #e2e8f0 !important;
+  padding: 1.5rem !important;
+  border-radius: 8px !important;
+  margin: 1.5rem 0 !important;
+}
+
+.prose code {
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
+  background-color: #f1f5f9 !important;
+  color: #dc2626 !important;
+  padding: 0.25rem 0.5rem !important;
+  border-radius: 4px !important;
+  font-size: 0.9em !important;
+}
+
+.prose pre code {
+  background-color: transparent !important;
+  color: inherit !important;
+  padding: 0 !important;
+}
+
+.prose table {
+  display: block !important;
+  overflow-x: auto !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 2rem 0 !important;
+  border-collapse: collapse !important;
+}
+
+.prose table th {
+  background-color: #f8fafc !important;
+  font-weight: 600 !important;
+  padding: 0.75rem !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+.prose table td {
+  padding: 0.75rem !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+.prose p,
+.prose li,
+.prose div {
+  overflow-wrap: break-word !important;
+  word-break: break-word !important;
+  max-width: 100% !important;
+}
+
+.prose p {
+  margin: 1.5rem 0 !important;
+  font-size: 1.125rem !important;
+  line-height: 1.8 !important;
+}
+
+.prose h1 {
+  font-size: 2.5rem !important;
+  font-weight: 800 !important;
+  margin-top: 2rem !important;
+  margin-bottom: 1rem !important;
+  color: #0f172a !important;
+  line-height: 1.2 !important;
+}
+
+.prose h2 {
+  font-size: 2rem !important;
+  font-weight: 700 !important;
+  margin-top: 2rem !important;
+  margin-bottom: 1rem !important;
+  color: #1e293b !important;
+  line-height: 1.3 !important;
+}
+
+.prose h3 {
+  font-size: 1.5rem !important;
+  font-weight: 600 !important;
+  margin-top: 1.5rem !important;
+  margin-bottom: 0.75rem !important;
+  color: #334155 !important;
+  line-height: 1.4 !important;
+}
+
+.prose ul,
+.prose ol {
+  margin: 1.5rem 0 !important;
+  padding-left: 2rem !important;
+}
+
+.prose li {
+  margin: 0.75rem 0 !important;
+  font-size: 1.125rem !important;
+  line-height: 1.8 !important;
+}
+
+.prose blockquote {
+  border-left: 4px solid #f97316 !important;
+  padding-left: 1.5rem !important;
+  margin: 2rem 0 !important;
+  font-style: italic !important;
+  color: #475569 !important;
+  background-color: #f8fafc !important;
+  padding: 1.5rem !important;
+  border-radius: 8px !important;
+}
+
+.prose a {
+  color: #f97316 !important;
+  text-decoration: underline !important;
+  font-weight: 500 !important;
+  transition: color 0.2s ease !important;
+}
+
+.prose a:hover {
+  color: #ea580c !important;
+}
+
+.prose strong {
+  font-weight: 700 !important;
+  color: #0f172a !important;
+}
+
+.prose em {
+  font-style: italic !important;
+}
+
+/* Blog content specific styles */
+.blog-content {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: #334155;
+}
+
+.blog-content img {
+  border-radius: 12px;
+  margin: 2rem 0;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Hide scrollbar but allow scrolling */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari and Opera */
+}
+
+/* Hide scrollbar but allow vertical scrolling */
+.scrollbar-hide-y {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  overflow-y: auto;
+}
+
+.scrollbar-hide-y::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari and Opera */
+}
+
+/* Remove selection outlines in rich text editor */
+.ProseMirror {
+  outline: none !important;
+}
+
+.ProseMirror:focus {
+  outline: none !important;
+}
+
+.ProseMirror-selectednode {
+  outline: none !important;
+}
+
+.ProseMirror * {
+  outline: none !important;
+}
+
+.ProseMirror *:focus {
+  outline: none !important;
+}
+
+/* Ensure horizontal scrolling works */
+.horizontal-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+/* Login page animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideRight {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-element {
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-delay-100 { animation-delay: 0.1s; }
+.animate-delay-200 { animation-delay: 0.2s; }
+.animate-delay-300 { animation-delay: 0.3s; }
+.animate-delay-400 { animation-delay: 0.4s; }
+.animate-delay-500 { animation-delay: 0.5s; }
+.animate-delay-600 { animation-delay: 0.6s; }
+.animate-delay-700 { animation-delay: 0.7s; }
+.animate-delay-800 { animation-delay: 0.8s; }
+.animate-delay-900 { animation-delay: 0.9s; }
+.animate-delay-1000 { animation-delay: 1s; }
+.animate-delay-1200 { animation-delay: 1.2s; }
+.animate-delay-1400 { animation-delay: 1.4s; }
+
+.animate-slide-right {
+  animation: slideRight 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-testimonial {
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+/* Custom checkbox styling */
+.custom-checkbox {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #e5e7eb;
+  border-radius: 4px;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.custom-checkbox:checked {
+  background-color: #ea580c;
+  border-color: #ea580c;
+}
+
+.custom-checkbox:checked::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* Custom scrollbar for admin sidebar */
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(107, 114, 128, 0.5) transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: rgba(107, 114, 128, 0.5);
+  border-radius: 3px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(107, 114, 128, 0.7);
+}
+
+.scrollbar-thumb-gray-700::-webkit-scrollbar-thumb {
+  background-color: rgba(55, 65, 81, 0.8);
+}
+
+.scrollbar-track-transparent::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Dashboard animations */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-slide-in-up {
+  animation: slideInUp 0.3s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+/* Admin login page styles */
+.admin-login-page {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 9999 !important;
+  background-color: #000000 !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+main:has(.admin-login-page) {
+  padding: 0 !important;
+  margin: 0 !important;
+  min-height: 0 !important;
+  height: 100vh !important;
+  overflow: hidden !important;
+}
+
+/* Smooth transitions for all interactive elements */
+* {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Enhanced focus states */
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid #f97316;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Professional table hover effects */
+table tbody tr {
+  transition: all 0.2s ease;
+}
+
+/* Scroll animations - fade in on scroll */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Smooth scroll behavior */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Premium animations for vehicle detail page */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.5s ease-out forwards;
+}
+
+/* Premium glassmorphism enhancements */
+.glass-form-container {
+  position: relative;
+  overflow: visible;
+  border-radius: 32px;
+  z-index: 8;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    0 16px 64px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.glass-form-box {
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 32px;
+  position: relative;
+  z-index: 10;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-form-box select option {
+  background: #1a1a1a;
+  color: white;
+  padding: 12px;
+}
+
+/* Premium hover effects */
+.premium-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.premium-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Gradient text animation */
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient {
+  background-size: 200% auto;
+  animation: gradient-shift 3s ease infinite;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* Premium scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+  background-clip: padding-box;
+}
+
+/* Luxury image transition effects - Smooth crossfade */
+@keyframes luxuryFadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes luxuryFadeOut {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
+@keyframes buttonGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(249, 115, 22, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(249, 115, 22, 0.5);
+  }
+}
+
+.animate-luxury-fade-in {
+  animation: luxuryFadeIn 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-luxury-fade-out {
+  animation: luxuryFadeOut 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-button-glow {
+  animation: buttonGlow 2s ease-in-out infinite;
+}
+
+/* Mobile Menu Enhancements */
+.mobile-menu-enter {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+.mobile-menu-enter-active {
+  transform: translateX(0);
+  opacity: 1;
+  transition: transform 300ms ease-in-out, opacity 300ms ease-in-out;
+}
+
+.mobile-menu-exit {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.mobile-menu-exit-active {
+  transform: translateX(100%);
+  opacity: 0;
+  transition: transform 300ms ease-in-out, opacity 300ms ease-in-out;
+}
+
+/* Mobile Menu Button Enhancement */
+.mobile-menu-button {
+  position: relative;
+  z-index: 60;
+  padding: 8px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.mobile-menu-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.mobile-menu-button:active {
+  transform: scale(0.95);
+}
+
+/* Ensure mobile menu is above other content */
+@media (max-width: 768px) {
+  .mobile-menu-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 40;
+  }
+  
+  .mobile-menu-panel {
+    position: fixed;
+    z-index: 50;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+  
+  /* Prevent body scroll when menu is open */
+  body.mobile-menu-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* Mobile-friendly gallery scroll */
+  .scrollbar-hide {
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 0 1rem;
+  }
+  
+  .scrollbar-hide > * {
+    scroll-snap-align: start;
+  }
+  
+  /* Optimize touch targets for mobile */
+  button, a, [role="button"] {
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  /* Smooth scrolling on mobile */
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Contact form specific - darker background */
+.contact-form-dark .glass-form-box {
+  background: rgba(0, 0, 0, 0.95);
+}
+
+/* DatePicker Portal Positioning - Fix for desktop overflow */
+.react-datepicker-popper {
+  z-index: 9999 !important;
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  will-change: transform !important;
+}
+
+.react-datepicker-popper[data-placement^="bottom"],
+.react-datepicker-popper[data-placement^="top"],
+.react-datepicker-popper[data-placement^="left"],
+.react-datepicker-popper[data-placement^="right"] {
+  top: 50% !important;
+  left: 50% !important;
+  right: auto !important;
+  bottom: auto !important;
+  transform: translate(-50%, -50%) !important;
+  margin: 0 !important;
+}
+
+/* DatePicker wrapper - ensure proper overflow */
+.react-datepicker__portal {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 9999 !important;
+  background-color: rgba(0, 0, 0, 0.8) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+}
+
+.react-datepicker__portal .react-datepicker {
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  transform: none !important;
+  margin: auto !important;
+}
+
+/* Prevent body scroll when DatePicker is open */
+body:has(.react-datepicker__portal) {
+  overflow: hidden !important;
+}
+
+/* DatePicker container styling */
+.react-datepicker-wrapper {
+  width: 100%;
+  display: block;
+}
+
+.react-datepicker__input-container {
+  width: 100%;
+  display: block;
+}
+
+.react-datepicker__input-container input {
+  width: 100%;
+}
+
+/* Force DatePicker to be centered and never overflow - Desktop only */
+@media (min-width: 768px) {
+  .react-datepicker-popper,
+  div[class*="react-datepicker-popper"] {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: translate(-50%, -50%) !important;
+    max-width: 90vw !important;
+    max-height: 90vh !important;
+    overflow: auto !important;
+    margin: 0 !important;
+  }
+  
+  .react-datepicker {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    margin: 0 !important;
+  }
+  
+  /* Portal container positioning */
+  #datepicker-portal {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    z-index: 9999 !important;
+    pointer-events: none !important;
+  }
+  
+  #datepicker-portal > * {
+    pointer-events: auto !important;
+  }
+  
+  /* Ensure portal children are centered */
+  #datepicker-portal .react-datepicker-popper {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+  }
+}
