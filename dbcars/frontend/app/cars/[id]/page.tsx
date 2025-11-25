@@ -80,7 +80,7 @@ export default function VehicleDetailPage() {
   useEffect(() => {
     const observers: IntersectionObserver[] = [];
 
-    const createObserver = (ref: React.RefObject<HTMLDivElement>, id: string, delay = 0) => {
+    const createObserver = (ref: React.RefObject<HTMLDivElement | null>, id: string, delay = 0) => {
       if (!ref.current) return;
       const observer = new IntersectionObserver(
         (entries) => {

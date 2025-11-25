@@ -3,6 +3,7 @@ import bcrypt from 'bcryptjs';
 import jwt, { SignOptions } from 'jsonwebtoken';
 import pool from '../config/database';
 import { body, validationResult } from 'express-validator';
+import { getJWTSecret, getJWTExpiresIn } from '../config/env';
 
 const router = express.Router();
 
@@ -45,8 +46,9 @@ router.post(
         return res.status(401).json({ error: 'Invalid credentials' });
       }
 
-      const jwtSecret: string = process.env.JWT_SECRET || 'secret';
-      const expiresIn = process.env.JWT_EXPIRES_IN || '7d';
+      // Use validated JWT secret helper
+      const jwtSecret = getJWTSecret();
+      const expiresIn = getJWTExpiresIn();
       const payload = { id: user.id, email: user.email, role: user.role };
       const token = jwt.sign(payload, jwtSecret, { expiresIn } as SignOptions);
 
@@ -102,8 +104,9 @@ router.post(
         return res.status(403).json({ error: 'Dev login only available for admin users' });
       }
 
-      const jwtSecret: string = process.env.JWT_SECRET || 'secret';
-      const expiresIn = process.env.JWT_EXPIRES_IN || '7d';
+      // Use validated JWT secret helper
+      const jwtSecret = getJWTSecret();
+      const expiresIn = getJWTExpiresIn();
       const payload = { id: user.id, email: user.email, role: user.role };
       const token = jwt.sign(payload, jwtSecret, { expiresIn } as SignOptions);
 

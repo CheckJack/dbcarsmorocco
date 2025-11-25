@@ -25,24 +25,15 @@ const nextConfig: NextConfig = {
   compress: true,
   // Enable React strict mode for better performance
   reactStrictMode: true,
-  // Exclude server-only packages from client bundles
-  serverComponentsExternalPackages: [
-    'axios',
-    'form-data',
-    'combined-stream',
-    'delayed-stream',
-    'mime-types',
-    'mime-db',
-  ],
   // Enable experimental features for better performance
   experimental: {
     optimizeCss: true,
-    // Fix Turbopack workspace root detection
-    turbopack: {
-      root: __dirname,
-    },
   },
-  // Webpack configuration to handle Node.js modules (for non-Turbopack builds)
+  // Turbopack configuration (Next.js 16 uses Turbopack by default)
+  turbopack: {
+    // Turbopack handles Node.js module exclusions automatically
+  },
+  // Webpack configuration for production builds (fallback if not using Turbopack)
   webpack: (config, { isServer }) => {
     if (!isServer) {
       // Exclude Node.js modules from client bundle

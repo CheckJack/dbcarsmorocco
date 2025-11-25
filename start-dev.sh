@@ -36,6 +36,14 @@ trap cleanup SIGINT SIGTERM
 # Start backend server
 echo "🔧 Starting Backend Server (Port 3001)..."
 cd "$PROJECT_ROOT/backend"
+
+# Check if node_modules exists for backend
+if [ ! -d "node_modules" ]; then
+    echo "📦 Installing backend dependencies..."
+    npm install
+    echo ""
+fi
+
 npm run dev > /tmp/backend.log 2>&1 &
 BACKEND_PID=$!
 
@@ -55,6 +63,14 @@ fi
 # Start frontend server
 echo "🎨 Starting Frontend Server (Port 3000)..."
 cd "$PROJECT_ROOT/frontend"
+
+# Check if node_modules exists for frontend
+if [ ! -d "node_modules" ]; then
+    echo "📦 Installing frontend dependencies..."
+    npm install
+    echo ""
+fi
+
 npm run dev > /tmp/frontend.log 2>&1 &
 FRONTEND_PID=$!
 

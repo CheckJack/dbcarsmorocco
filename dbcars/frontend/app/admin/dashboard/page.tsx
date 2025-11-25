@@ -26,15 +26,16 @@ import StatCard from '@/components/admin/StatCard';
 import StatusBadge from '@/components/admin/StatusBadge';
 import EmptyState from '@/components/admin/EmptyState';
 import LoadingSpinner from '@/components/admin/LoadingSpinner';
+import type { AdminStatistics, AdminBooking } from '@/types/admin';
 
 export default function AdminDashboard() {
   const router = useRouter();
-  const [stats, setStats] = useState<any>(null);
+  const [stats, setStats] = useState<AdminStatistics | null>(null);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [modalTitle, setModalTitle] = useState('');
-  const [modalBookings, setModalBookings] = useState<any[]>([]);
+  const [modalBookings, setModalBookings] = useState<AdminBooking[]>([]);
   const [loadingBookings, setLoadingBookings] = useState(false);
 
   useEffect(() => {
@@ -579,7 +580,7 @@ export default function AdminDashboard() {
             {stats?.status_breakdown ? (
               <div className="space-y-5">
                 {Object.entries(stats.status_breakdown).map(([status, count]: [string, any]) => {
-                  const total = Object.values(stats.status_breakdown).reduce((a: any, b: any) => a + b, 0);
+                  const total: number = Object.values(stats.status_breakdown).reduce((a: any, b: any) => a + b, 0) as number;
                   const percentage = total > 0 ? (count / total) * 100 : 0;
                   
                   return (

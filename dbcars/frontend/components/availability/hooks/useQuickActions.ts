@@ -49,7 +49,7 @@ export function useQuickActions(onSuccess?: () => void) {
           );
           if (proceed) {
             // User wants to proceed - we could add a force flag here
-            toast.warning('Note created with existing bookings on this date');
+            toast('⚠️ Note created with existing bookings on this date');
             onSuccess?.();
           }
         } else {
@@ -105,8 +105,8 @@ export function useQuickActions(onSuccess?: () => void) {
         const failed = results.filter((r) => r.status === 'rejected').length;
 
         if (failed > 0) {
-          toast.warning(
-            `Created ${successful} note(s), ${failed} failed (may have bookings on those dates)`
+          toast(
+            `⚠️ Created ${successful} note(s), ${failed} failed (may have bookings on those dates)`
           );
         } else {
           toast.success(

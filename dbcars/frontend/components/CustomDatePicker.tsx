@@ -1,9 +1,10 @@
 'use client';
 
-import DatePicker, { ReactDatePickerProps } from 'react-datepicker';
+import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import React from 'react';
 
-interface CustomDatePickerProps extends Omit<ReactDatePickerProps, 'className'> {
+interface CustomDatePickerProps extends Omit<React.ComponentProps<typeof DatePicker>, 'className'> {
   className?: string;
 }
 
@@ -14,7 +15,7 @@ export default function CustomDatePicker({
   return (
     <div className="custom-datepicker-wrapper">
       <DatePicker
-        {...props}
+        {...(props as any)}
         className={className}
         calendarClassName="custom-datepicker-calendar"
         popperClassName="custom-datepicker-popper"

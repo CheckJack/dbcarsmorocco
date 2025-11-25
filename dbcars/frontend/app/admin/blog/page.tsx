@@ -346,9 +346,9 @@ export default function AdminBlogPage() {
                       </div>
                     </td>
                     <td className="px-4 xl:px-6 py-3 xl:py-4 whitespace-nowrap relative">
-                      <div className="relative" ref={(el) => (menuRefs.current[post.id] = el)}>
+                      <div className="relative" ref={(el) => { menuRefs.current[post.id] = el; }}>
                         <button
-                          ref={(el) => (buttonRefs.current[post.id] = el)}
+                          ref={(el) => { buttonRefs.current[post.id] = el; }}
                           onClick={(e) => {
                             const button = e.currentTarget;
                             const rect = button.getBoundingClientRect();
@@ -454,9 +454,9 @@ export default function AdminBlogPage() {
                           <p className="text-sm text-gray-400 mt-1 line-clamp-2">{post.excerpt}</p>
                         )}
                       </div>
-                      <div className="relative" ref={(el) => (menuRefs.current[post.id] = el)}>
+                      <div className="relative" ref={(el) => { menuRefs.current[post.id] = el; }}>
                         <button
-                          ref={(el) => (buttonRefs.current[`mobile-${post.id}`] = el)}
+                          ref={(el) => { buttonRefs.current[`mobile-${post.id}`] = el; }}
                           onClick={(e) => {
                             const button = e.currentTarget;
                             const rect = button.getBoundingClientRect();

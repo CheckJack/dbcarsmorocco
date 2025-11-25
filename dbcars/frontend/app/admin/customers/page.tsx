@@ -490,7 +490,7 @@ export default function AdminCustomersPage() {
                       )}
                     </td>
                     <td className="px-4 xl:px-6 py-3 xl:py-4 whitespace-nowrap" onClick={(e) => e.stopPropagation()}>
-                      <div className="relative" ref={(el) => (menuRefs.current[customer.id] = el)}>
+                      <div className="relative" ref={(el) => { menuRefs.current[customer.id] = el; }}>
                         <button
                           onClick={() => setOpenMenuId(openMenuId === customer.id ? null : customer.id)}
                           className="p-1.5 text-gray-500 hover:text-gray-300 hover:bg-gray-800 rounded-lg transition-colors"
@@ -602,7 +602,7 @@ export default function AdminCustomersPage() {
                 </div>
 
                 <div className="flex justify-end mt-3" onClick={(e) => e.stopPropagation()}>
-                  <div className="relative" ref={(el) => (menuRefs.current[`mobile-${customer.id}`] = el)}>
+                  <div className="relative" ref={(el) => { menuRefs.current[`mobile-${customer.id}`] = el; }}>
                     <button
                       onClick={() => setOpenMenuId(openMenuId === `mobile-${customer.id}` ? null : `mobile-${customer.id}`)}
                       className="p-2 text-gray-500 hover:text-gray-300 hover:bg-gray-800 rounded-lg transition-colors"

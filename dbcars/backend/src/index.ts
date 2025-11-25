@@ -14,6 +14,7 @@ import couponsRoutes from './routes/coupons';
 import draftsRoutes from './routes/drafts';
 import contactRoutes from './routes/contact';
 import { testConnection } from './config/database';
+import { validateEnv } from './config/env';
 
 dotenv.config();
 
@@ -77,14 +78,19 @@ app.get('/api/health', (req, res) => {
 // Start server with database connection check
 async function startServer() {
   try {
-    // Validate required environment variables
-    const requiredEnvVars = ['DB_HOST', 'DB_NAME', 'DB_USER'];
-    const missingEnvVars = requiredEnvVars.filter(
-      (envVar) => !process.env[envVar] && envVar !== 'DB_HOST'
-    );
+    // Validate environment variables
+    const { errors, warnings } = validateEnv();
     
-    if (missingEnvVars.length > 0) {
-      console.warn('⚠️  Warning: Some environment variables are not set:', missingEnvVars.join(', '));
+    if (warnings.length > 0) {
+      console.warn('⚠️  Environment variable warnings:');
+      warnings.forEach((warning) => console.warn(`   - ${warning}`));
+    }
+
+    if (errors.length > 0) {
+      console.error('❌ Environment variable errors:');
+      errors.forEach((error) => console.error(`   - ${error}`));
+      console.error('\n💡 Please check your .env file and ensure all required variables are set.');
+      process.exit(1);
     }
 
     // Test database connection before starting server

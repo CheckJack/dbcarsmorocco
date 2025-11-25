@@ -194,15 +194,17 @@ const RichTextEditor = ({ content, onChange, placeholder = 'Write your blog post
   const insertImageWithDimensions = useCallback(() => {
     if (!editor || !imageUrl) return;
 
-    const attrs: { src: string; width?: string; height?: string } = { src: imageUrl };
-    if (imageWidth) attrs.width = imageWidth;
-    if (imageHeight) attrs.height = imageHeight;
-
     if (isEditingImage) {
-      // Update existing image
+      // Update existing image - accepts strings
+      const attrs: { src: string; width?: string; height?: string } = { src: imageUrl };
+      if (imageWidth) attrs.width = imageWidth;
+      if (imageHeight) attrs.height = imageHeight;
       editor.chain().focus().updateAttributes('image', attrs).run();
     } else {
-      // Insert new image
+      // Insert new image - requires numbers
+      const attrs: { src: string; width?: number; height?: number } = { src: imageUrl };
+      if (imageWidth) attrs.width = parseInt(imageWidth, 10);
+      if (imageHeight) attrs.height = parseInt(imageHeight, 10);
       editor.chain().focus().setImage(attrs).run();
     }
 
@@ -316,7 +318,7 @@ const RichTextEditor = ({ content, onChange, placeholder = 'Write your blog post
     <button
       type="button"
       onClick={(e) => {
-        e.preventDefault();
+        e?.preventDefault();
         onClick(e);
       }}
       disabled={disabled}
@@ -459,7 +461,7 @@ const RichTextEditor = ({ content, onChange, placeholder = 'Write your blog post
           </ToolbarButton>
           <ToolbarButton
             onClick={(e) => {
-              e.preventDefault();
+              e?.preventDefault();
               editor.chain().focus().toggleBlockquote().run();
             }}
             isActive={editor.isActive('blockquote')}
@@ -521,7 +523,7 @@ const RichTextEditor = ({ content, onChange, placeholder = 'Write your blog post
         <div className="flex items-center gap-1">
           <ToolbarButton
             onClick={(e) => {
-              e.preventDefault();
+              e?.preventDefault();
               const input = document.createElement('input');
               input.type = 'color';
               const currentColor = editor.getAttributes('textStyle').color;
@@ -576,7 +578,7 @@ const RichTextEditor = ({ content, onChange, placeholder = 'Write your blog post
         <div className="flex items-center gap-1">
           <ToolbarButton
             onClick={(e) => {
-              e.preventDefault();
+              e?.preventDefault();
               if (editor.state.selection.empty) {
                 // If no selection, insert code mark for future typing
                 editor.chain().focus().toggleCode().run();
@@ -864,7 +866,7 @@ const RichTextEditor = ({ content, onChange, placeholder = 'Write your blog post
                   autoFocus
                   onKeyDown={(e) => {
                     if (e.key === 'Enter') {
-                      e.preventDefault();
+                      e?.preventDefault();
                       insertLink();
                     }
                   }}

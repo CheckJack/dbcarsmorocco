@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
+import { getJWTSecret } from '../config/env';
 
 export interface AuthRequest extends Request {
   user?: {
@@ -17,7 +18,9 @@ export const authenticate = (req: AuthRequest, res: Response, next: NextFunction
       return res.status(401).json({ error: 'No token provided' });
     }
 
-    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'secret') as {
+    // Use validated JWT secret
+    const jwtSecret = getJWTSecret();
+    const decoded = jwt.verify(token, jwtSecret) as {
       id: string;
       email: string;
       role: string;

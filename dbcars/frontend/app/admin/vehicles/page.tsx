@@ -311,7 +311,7 @@ export default function AdminVehiclesPage() {
                         )}
                   </td>
                   <td className={`px-4 xl:px-6 py-3 xl:py-4 whitespace-nowrap ${openMenuId === vehicle.id ? 'relative z-50' : ''}`} onClick={(e) => e.stopPropagation()}>
-                        <div className="relative" ref={(el) => (menuRefs.current[vehicle.id] = el)}>
+                        <div className="relative" ref={(el) => { menuRefs.current[vehicle.id] = el; }}>
                           <button
                             onClick={() => setOpenMenuId(openMenuId === vehicle.id ? null : vehicle.id)}
                             className="p-1.5 text-gray-500 hover:text-gray-300 hover:bg-gray-800 rounded-lg transition-colors"
@@ -425,7 +425,7 @@ export default function AdminVehiclesPage() {
                     </div>
                   </div>
                   <div className={`flex justify-end mt-3 ${openMenuId === `mobile-${vehicle.id}` ? 'relative z-50' : ''}`} onClick={(e) => e.stopPropagation()}>
-                    <div className="relative" ref={(el) => (menuRefs.current[`mobile-${vehicle.id}`] = el)}>
+                    <div className="relative" ref={(el) => { menuRefs.current[`mobile-${vehicle.id}`] = el; }}>
                       <button
                         onClick={() => setOpenMenuId(openMenuId === `mobile-${vehicle.id}` ? null : `mobile-${vehicle.id}`)}
                         className="p-2 text-gray-500 hover:text-gray-300 hover:bg-gray-800 rounded-lg transition-colors"

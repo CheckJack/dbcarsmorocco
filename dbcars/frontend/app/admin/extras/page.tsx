@@ -305,7 +305,7 @@ export default function AdminExtrasPage() {
                       )}
                     </td>
                     <td className={`px-4 xl:px-6 py-3 xl:py-4 whitespace-nowrap ${openMenuId === extra.id ? 'relative z-50' : ''}`}>
-                      <div className="relative" ref={(el) => (menuRefs.current[extra.id] = el)}>
+                      <div className="relative" ref={(el) => { menuRefs.current[extra.id] = el; }}>
                         <button
                           onClick={() => setOpenMenuId(openMenuId === extra.id ? null : extra.id)}
                           className="p-1.5 text-gray-500 hover:text-gray-300 hover:bg-gray-800 rounded-lg transition-colors"
@@ -397,7 +397,7 @@ export default function AdminExtrasPage() {
                   </div>
                 </div>
                 <div className={`flex justify-end mt-3 ${openMenuId === `mobile-${extra.id}` ? 'relative z-50' : ''}`}>
-                  <div className="relative" ref={(el) => (menuRefs.current[`mobile-${extra.id}`] = el)}>
+                  <div className="relative" ref={(el) => { menuRefs.current[`mobile-${extra.id}`] = el; }}>
                     <button
                       onClick={() => setOpenMenuId(openMenuId === `mobile-${extra.id}` ? null : `mobile-${extra.id}`)}
                       className="p-2 text-gray-500 hover:text-gray-300 hover:bg-gray-800 rounded-lg transition-colors"

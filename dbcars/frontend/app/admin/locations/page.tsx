@@ -307,7 +307,7 @@ export default function AdminLocationsPage() {
                       </div>
                     </td>
                     <td className={`px-4 xl:px-6 py-3 xl:py-4 whitespace-nowrap ${openMenuId === location.id ? 'relative z-50' : ''}`}>
-                      <div className="relative" ref={(el) => (menuRefs.current[location.id] = el)}>
+                      <div className="relative" ref={(el) => { menuRefs.current[location.id] = el; }}>
                         <button
                           onClick={() => setOpenMenuId(openMenuId === location.id ? null : location.id)}
                           className="p-1.5 text-gray-500 hover:text-gray-300 hover:bg-gray-800 rounded-lg transition-colors"
@@ -420,7 +420,7 @@ export default function AdminLocationsPage() {
                 </div>
 
                 <div className="flex justify-end mt-3">
-                  <div className="relative" ref={(el) => (menuRefs.current[`mobile-${location.id}`] = el)}>
+                  <div className="relative" ref={(el) => { menuRefs.current[`mobile-${location.id}`] = el; }}>
                     <button
                       onClick={() => setOpenMenuId(openMenuId === `mobile-${location.id}` ? null : `mobile-${location.id}`)}
                       className="p-2 text-gray-500 hover:text-gray-300 hover:bg-gray-800 rounded-lg transition-colors"
